@@ -12,6 +12,17 @@
       50% { background-position: 100% 50%; } /* Tengah posisi background */
       100% { background-position: 0% 50%; } /* Kembali ke awal posisi */
     }
+    @keyframes fadeUp{
+      from{
+        opacity:0;
+        transform: translateY(40px);
+      }
+      to{
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
     body { /* Styling untuk body utama */
       margin: 0; /* Hilangkan margin default */
       min-height: 100vh; /* Tinggi layar penuh */
@@ -102,6 +113,7 @@
       display: flex; /* Flexbox */
       align-items: center; /* Tengah vertikal */
       justify-content: center; /* Tengah horizontal */
+      animation: fadeUp .8s ease;
     }
     .hero figure img { /* Foto dalam figure */
       width: 100%; /* Lebar penuh */
@@ -110,6 +122,7 @@
     }
     .hero .intro { /* Intro teks */
       flex: 2 1 360px; /* Fleksibel */
+      animation: fadeUp 1.1s ease;
     }
     .hero .intro .tag { /* Tag halo */
       display: inline-block; /* Tampil blok dalam baris */
@@ -212,7 +225,7 @@
 }
 
 .tool-card:hover{
-    transform:translateY(-5px);
+    transform:translateY(-20px);
 }
 
 .tool-card img{
@@ -262,7 +275,7 @@
 }
 
 .figma{
-    background:conic-gradient(#F24E1E 72deg,#dbeafe 0);
+    background:conic-gradient(#F24E1E 18deg,#dbeafe 0);
 }
 
 .vscode{
@@ -275,49 +288,83 @@
     font-weight:600;
 }
     /* PROJECTS */
-    #projects { /* Bagian proyek */
-      max-width: 1100px; /* Lebar maksimal */
-      margin: 0 auto; /* Tengah */
-      padding: 24px 18px 8px; /* Padding */
-    }
-    #projects h2 { /* Judul proyek */
-      margin: 0 0 12px 0; /* Margin bawah */
-      font-size: 26px; /* Ukuran font */
-    }
-    #projects .grid { /* Grid proyek */
-      display: grid; /* Layout grid */
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); /* Kolom fleksibel */
-      gap: 16px; /* Jarak antar kartu */
-    }
-    #projects .card { /* Kartu proyek */
-      text-decoration: none; /* Hilangkan underline */
-      color: inherit; /* Warna teks ikuti induk */
-      border-radius: 18px; /* Sudut membulat */
-      overflow: hidden; /* Sembunyikan isi keluar */
-      background: #ffffff; /* Background putih */
-      border: 1px solid rgba(15,23,42,0.08); /* Border tipis */
-      box-shadow: 0 10px 24px rgba(2,6,23,0.08); /* Bayangan */
-      display: block; /* Blok */
-      transition: transform .15s ease; /* Efek hover */
-    }
-    #projects .card img { /* Gambar proyek */
-      width: 100%; /* Lebar penuh */
-      height: 100%; /* Tinggi penuh */
-      object-fit: cover; /* Sesuaikan */
-    }
-    #projects .card .content { /* Isi kartu */
-      padding: 14px; /* Padding */
-    }
-    #projects .card h3 { /* Judul kartu */
-      margin: 0 0 6px 0; /* Margin bawah */
-      font-size: 18px; /* Ukuran font */
-    }
-    #projects .card p { /* Deskripsi kartu */
-      margin: 0; /* Hilangkan margin */
-      color: #475569; /* Warna abu */
-      font-size: 14px; /* Ukuran font */
-    }
+#projects{
+    max-width:1100px;
+    margin:0 auto;
+    padding:24px 18px 8px;
+}
 
+#projects h2{
+    margin:0 0 12px 0;
+    font-size:26px;
+}
+
+#projects .grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+    gap:16px;
+}
+
+#projects .card{
+    text-decoration:none;
+    color:inherit;
+    border-radius:18px;
+    overflow:hidden;
+    background:#ffffff;
+    border:1px solid rgba(15,23,42,.08);
+    box-shadow:0 10px 24px rgba(2,6,23,.08);
+    display:block;
+
+    /* Animasi */
+    transition:
+        transform .35s ease,
+        box-shadow .35s ease;
+}
+
+/* Efek ketika diarahkan kursor */
+#projects .card:hover{
+    transform:translateY(-8px) scale(1.03);
+    box-shadow:0 20px 40px rgba(37,99,235,.18);
+}
+
+#projects .card img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    transition:transform .45s ease;
+}
+
+/* Zoom gambar */
+#projects .card:hover img{
+    transform:scale(1.08);
+}
+
+#projects .card .content{
+    padding:14px;
+}
+
+#projects .card h3{
+    margin:0 0 6px 0;
+    font-size:18px;
+    transition:color .3s ease;
+}
+
+/* Judul berubah warna */
+#projects .card:hover h3{
+    color:#2563eb;
+}
+
+#projects .card p{
+    margin:0;
+    color:#475569;
+    font-size:14px;
+    transition:color .3s ease;
+}
+
+/* Deskripsi sedikit lebih gelap */
+#projects .card:hover p{
+    color:#334155;
+}
     /* ACHIEVEMENTS */
     #achievements { /* Bagian pencapaian */
       max-width: 1100px; /* Lebar maksimal */
@@ -435,7 +482,7 @@
         <div class="tool-card">
             <img src="https://cdn.simpleicons.org/figma/F24E1E" alt="Figma">
             <div class="circle figma">
-                <span>20%</span>
+                <span>5%</span>
             </div>
             <h3>Figma</h3>
         </div>
